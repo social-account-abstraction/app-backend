@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
 import { Account } from '@/@generated/nestgraphql/account/account.model';
-import { AccountRole } from '@/@generated/nestgraphql/prisma/account-role.enum';
-import { AccountStatus } from '@/@generated/nestgraphql/prisma/account-status.enum';
 import { AccountGateway } from '@/app/account/account.gateway';
 import { UpdateAccountInput } from '@/app/account/types';
 import { CryptoService } from '@/common/crypto/crypto.service';
@@ -19,7 +17,6 @@ export class AccountService {
   public async createAccount(
     email: string,
     password: string,
-    status: AccountStatus = AccountStatus.ACTIVE,
   ): Promise<Account> {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const salt = process.env.SALT!;
@@ -28,8 +25,6 @@ export class AccountService {
       data: {
         email,
         passwordHash,
-        status,
-        roles: [AccountRole.USER],
       },
     });
   }
@@ -53,17 +48,6 @@ export class AccountService {
       },
       data: {
         passwordHash: newPasswordHash,
-      },
-    });
-  }
-
-  async changeStatus(email: string, status: AccountStatus): Promise<Account> {
-    return this.prisma.account.update({
-      where: {
-        email,
-      },
-      data: {
-        status,
       },
     });
   }

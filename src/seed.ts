@@ -3,7 +3,7 @@
 import * as readline from 'node:readline';
 
 import { faker } from '@faker-js/faker';
-import { AccountRole, AccountStatus, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 import { CryptoService } from '@/common/crypto/crypto.service';
 
@@ -51,8 +51,6 @@ async function main() {
     data: {
       email: faker.internet.email().toLowerCase(),
       passwordHash: newPasswordHash,
-      roles: [AccountRole.ADMIN, AccountRole.USER],
-      status: AccountStatus.ACTIVE,
       avatarUrl: 'https://example.com/avatar.png',
       sessions: {
         create: {
@@ -68,8 +66,6 @@ async function main() {
     data: {
       email: faker.internet.email().toLowerCase(),
       passwordHash: newPasswordHash,
-      roles: [AccountRole.USER],
-      status: AccountStatus.ACTIVE,
       sessions: {
         create: {
           token: faker.random.numeric(42),

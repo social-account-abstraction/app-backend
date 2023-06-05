@@ -3,7 +3,6 @@ import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
 
 import { Account } from '@/@generated/nestgraphql/account/account.model';
 import { AccountRole } from '@/@generated/nestgraphql/prisma/account-role.enum';
-import { AccountStatus } from '@/@generated/nestgraphql/prisma/account-status.enum';
 import { AccountService } from '@/app/account/account.service';
 import { AuthResponse, GenerateEmailCodeResponse } from '@/app/account/types';
 import { AccountSessionService } from '@/app/account-session/account-session.service';
@@ -38,11 +37,7 @@ export class AuthResolver {
     @Context() context: RequestContext,
     @RealIp() ip: string,
   ): Promise<AuthResponse> {
-    const account = await this.accountService.createAccount(
-      email,
-      password,
-      AccountStatus.INACTIVE,
-    );
+    const account = await this.accountService.createAccount(email, password);
     const token = await this.cryptoService.generateRandomString(
       RandomStringType.ACCESS_TOKEN,
     );
@@ -175,26 +170,6 @@ export class AuthResolver {
       };
     } else {
       throw new Error('Sending email error');
-    }
-  }
-
-  @Mutation(() => Account)
-  async activateAccount(
-    @Args('email') email: string,
-    @Args('code') code: string,
-  ): Promise<Account> {
-    const isCodeValid = await this.oneTimeCodeService.validateOneTimeCode(
-      email,
-      code,
-    );
-    if (isCodeValid) {
-      await this.oneTimeCodeService.deleteOneTimeCode(email);
-      return await this.accountService.changeStatus(
-        email,
-        AccountStatus.ACTIVE,
-      );
-    } else {
-      throw new Error('Invalid code');
     }
   }
 

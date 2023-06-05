@@ -4,7 +4,6 @@ import { AccountSessionCreateWithoutAccountInput } from './account-session-creat
 import { Type } from 'class-transformer';
 import { AccountSessionCreateOrConnectWithoutAccountInput } from './account-session-create-or-connect-without-account.input';
 import { AccountSessionUpsertWithWhereUniqueWithoutAccountInput } from './account-session-upsert-with-where-unique-without-account.input';
-import { AccountSessionCreateManyAccountInputEnvelope } from './account-session-create-many-account-input-envelope.input';
 import { AccountSessionWhereUniqueInput } from './account-session-where-unique.input';
 import { AccountSessionUpdateWithWhereUniqueWithoutAccountInput } from './account-session-update-with-where-unique-without-account.input';
 import { AccountSessionUpdateManyWithWhereWithoutAccountInput } from './account-session-update-many-with-where-without-account.input';
@@ -24,10 +23,6 @@ export class AccountSessionUncheckedUpdateManyWithoutAccountNestedInput {
     @Field(() => [AccountSessionUpsertWithWhereUniqueWithoutAccountInput], {nullable:true})
     @Type(() => AccountSessionUpsertWithWhereUniqueWithoutAccountInput)
     upsert?: Array<AccountSessionUpsertWithWhereUniqueWithoutAccountInput>;
-
-    @Field(() => AccountSessionCreateManyAccountInputEnvelope, {nullable:true})
-    @Type(() => AccountSessionCreateManyAccountInputEnvelope)
-    createMany?: AccountSessionCreateManyAccountInputEnvelope;
 
     @Field(() => [AccountSessionWhereUniqueInput], {nullable:true})
     @Type(() => AccountSessionWhereUniqueInput)

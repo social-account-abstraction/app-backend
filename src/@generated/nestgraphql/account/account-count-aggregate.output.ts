@@ -22,12 +22,6 @@ export class AccountCountAggregate {
     passwordHash!: number;
 
     @Field(() => Int, {nullable:false})
-    roles!: number;
-
-    @Field(() => Int, {nullable:false})
-    status!: number;
-
-    @Field(() => Int, {nullable:false})
     avatarUrl!: number;
 
     @Field(() => Int, {nullable:false})
