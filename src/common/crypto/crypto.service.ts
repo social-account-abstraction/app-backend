@@ -1,7 +1,6 @@
 import * as crypto from 'node:crypto';
 
 import { Injectable } from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
 
 export enum RandomStringType {
   ACCESS_TOKEN = 'at_',
@@ -10,8 +9,10 @@ export enum RandomStringType {
 @Injectable()
 export class CryptoService {
   public async hash(data: string, salt: string): Promise<string> {
-    const SALT_ROUNDS = 11;
-    return bcrypt.hash(data + salt, SALT_ROUNDS);
+    // return sha256(data + salt);
+    const cryptoHash = crypto.createHash('sha256');
+    cryptoHash.update(data + salt);
+    return cryptoHash.digest('hex');
   }
 
   public async hashVerify(
@@ -19,7 +20,8 @@ export class CryptoService {
     salt: string,
     hash: string,
   ): Promise<boolean> {
-    return bcrypt.compare(data + salt, hash);
+    const result = await this.hash(data, salt);
+    return result === hash;
   }
 
   public async generateRandomString(
