@@ -15,6 +15,7 @@ import { AccountSessionModule } from '@/app/account-session/account-session.modu
 import { AuthModule } from '@/app/auth/auth.module';
 import { RequestContext } from '@/app/auth/request-context-extractor/interfaces';
 import { RequestContextExtractorMiddleware } from '@/app/auth/request-context-extractor/request-context-extractor.middleware';
+import { ConnectorsModule } from '@/app/connectors/connectors.module';
 import { DebugModule } from '@/app/debug/debug.module';
 import { EmailModule } from '@/app/email/email.module';
 import { OneTimeCodeModule } from '@/app/one-time-code/one-time-code.module';
@@ -65,6 +66,7 @@ import { HealthModule } from './health/health.module';
     LoggerServeModule,
     FileUploadModule,
     HealthModule,
+    ConnectorsModule,
   ],
   providers: [
     {
