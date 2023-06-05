@@ -11,8 +11,8 @@ This is proof-of-concept of socio-technical mechanics related to account recover
 ## Feature list
 
  - [x] Social Recovery via your friends social network accounts
+ - [ ] Freeze your account via Telegram bot (and unfreeze with private keys which are not compromised)
  - [ ] Storing recovery process state onchain (or in decentralized storages like IPFS)
- - [ ] Freeze your account via Telegram bot (and unfreeze with private keys are not)
  - [ ] Different wallets (accounts) with transaction amount limits
  - [ ] Web UI for social recovery
  - [ ] Moblie UI for social recovery
