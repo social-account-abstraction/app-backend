@@ -26,6 +26,7 @@ import { LoggerModule } from '@/common/logger/logger.module';
 import { LoggerServeModule } from '@/common/logger-serve/logger-serve.module';
 import { PrismaModule } from '@/common/prisma/prisma.module';
 
+import { EthWrapperModule } from './eth-wrapper/eth-wrapper.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -65,6 +66,7 @@ import { HealthModule } from './health/health.module';
     LoggerServeModule,
     HealthModule,
     ConnectorsModule,
+    EthWrapperModule,
   ],
   providers: [
     {
