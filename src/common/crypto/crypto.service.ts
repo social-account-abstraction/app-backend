@@ -8,19 +8,15 @@ export enum RandomStringType {
 
 @Injectable()
 export class CryptoService {
-  public async hash(data: string, salt: string): Promise<string> {
+  public async hash(data: string): Promise<string> {
     // return sha256(data + salt);
     const cryptoHash = crypto.createHash('sha256');
-    cryptoHash.update(data + salt);
+    cryptoHash.update(data);
     return cryptoHash.digest('hex');
   }
 
-  public async hashVerify(
-    data: string,
-    salt: string,
-    hash: string,
-  ): Promise<boolean> {
-    const result = await this.hash(data, salt);
+  public async hashVerify(data: string, hash: string): Promise<boolean> {
+    const result = await this.hash(data);
     return result === hash;
   }
 

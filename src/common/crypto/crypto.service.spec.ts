@@ -15,11 +15,10 @@ describe('CryptoService', () => {
 
   test('should hash data', async () => {
     const text = 'Hello';
-    const salt = '123';
-    const hash = await service.hash(text, salt);
+    const hash = await service.hash(text);
     expect(hash).toBeDefined();
 
-    const isMatch = await service.hashVerify(text, salt, hash);
+    const isMatch = await service.hashVerify(text, hash);
     expect(isMatch).toBe(true);
   });
 
