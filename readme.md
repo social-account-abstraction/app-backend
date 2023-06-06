@@ -13,12 +13,13 @@ This is proof-of-concept of socio-technical mechanics related to account recover
 
 ## 📋 Feature list
 
-- [x] Social Recovery via your friends' social network accounts
-- [ ] Web UI for SRA
-- [ ] Mobile UI for the wallet owner
-- [ ] Freeze your account via Telegram bot (and unfreeze with private keys which are not compromised or with SRAs)
-- [ ] Storing recovery process state onchain (or in decentralized storages like IPFS)
-- [ ] Different wallets (accounts) with transaction amount limits
+- [x] Account Abstraction Fabric for wallet creation with social recovery fucntionality via your friends' social network accounts
+- [x] Web UI for Social Recovery Agent based on Google Account
+- [x] Mobile UI for the wallet owner: creation of Account Abstraction Wallet, change controlling keys via social recovery
+- [ ] Freeze your account via Telegram bot / Web UI
+- [ ] Unfreeze your Account Abstraction Wallet via social recovery 
+- [ ] Integrtion of other social recovary factors (Facebook, Twitter, Telegram, magiclink, etc)
+- [ ] Social Wallet implemented as Metamask SNAP
 
 ## 🥕 Assumptions and requirements
 
