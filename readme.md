@@ -46,3 +46,51 @@ This is proof-of-concept of socio-technical mechanics related to account recover
     - User submits transaction to blockchain with SRA's data hashes
     - Smart contract checks the validity of hashes stored and calculated based on user's input
     - Smart contract updates owner if hashes are equal
+
+## 📃 Get started (TL;DR)
+
+```shell
+# Clone the project
+$ git clone https://github.com/social-account-abstraction/app-backend.git
+
+# Deploy database: 
+$ npm run db:migrations:apply
+
+# Development run: 
+$ npm run start:dev
+
+# Production build: 
+$ npm run build
+
+# Production run: 
+$ npm start:prod
+```
+
+### 🥡 Docker-compose
+
+To launch the project in a Docker container, run the command `docker-compose up -d`
+
+### 📦 Database workflow
+
+```shell
+# Edit schema: 
+$ prisma/schema.prisma
+
+# Format schema: 
+$ npm run db:schema:format
+
+# Create migration: 
+$ npm run db:migrations:create
+
+# Deploy migrations to database: 
+$ npm run db:migrations:apply
+```
+
+> More info about using Prisma: https://www.prisma.io
+
+#### 🔑 Database admin panel in docker
+
+The project has an admin panel configured to work with the database, available by default on the `5000`
+port: http://localhost:5000
+
+**Important:** In production mode, be sure to set up a password for the database admin page
