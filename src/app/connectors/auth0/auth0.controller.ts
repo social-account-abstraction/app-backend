@@ -42,7 +42,9 @@ export class Auth0Controller {
         throw new NotFoundException();
       }
 
-      const redirectUri = `${request.protocol}://${request.get('Host')}${
+      const PREFIX = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+
+      const redirectUri = `${PREFIX}://${request.get('Host')}${
         request.originalUrl
       }`;
 
