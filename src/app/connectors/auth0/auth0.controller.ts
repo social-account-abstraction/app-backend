@@ -756,19 +756,20 @@ export class Auth0Controller {
           type: 'receive',
         },
       ] as AbiItem[];
-      const contract = new web3.eth.Contract(ABI, state);
-      const events = await contract.getPastEvents('NewSocialRecoveryAgents', {
-        fromBlock: 0,
-        toBlock: 'latest',
-      });
+      // const contract = new web3.eth.Contract(ABI, state);
+      // const events = await contract.getPastEvents('NewSocialRecoveryAgents', {
+      //   fromBlock: 0,
+      //   toBlock: 'latest',
+      // });
+      //
+      // if (events.length === 0) {
+      //   throw new NotFoundException();
+      // }
 
-      if (events.length === 0) {
-        throw new NotFoundException();
-      }
-
-      const eventsCount = events.length;
-
-      console.log(state, events, eventsCount, userInfo);
+      const eventsCount = 1;
+      // const eventsCount = events.length;
+      console.log(ABI, web3);
+      console.log(state, eventsCount, userInfo);
 
       const hashedUserInfo = await this.cryptoService.hash(
         state + eventsCount.toString() + JSON.stringify(userInfo),
